@@ -13,7 +13,7 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   }
-
+  //Testing instance of Books component class in parent 
   render() {
     return (
       <div className="app">
@@ -42,7 +42,7 @@ class BooksApp extends React.Component {
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
-              <Books/>
+              <Books/>           
             </div>
             <div className="list-books-content">
               <div>
