@@ -2,6 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Books from './Books'
+import Shelves from './Shelves'
 
 class BooksApp extends React.Component {
   /** 
@@ -213,7 +214,7 @@ class BooksApp extends React.Component {
             <ol>
               {this.state.books.map(book => <Books key={book.id} book={book}/>)}
             </ol>  
-
+            <Shelves/>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
