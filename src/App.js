@@ -28,7 +28,7 @@ class BooksApp extends React.Component {
   render() {
 
     console.log(this.state.books);
-    
+
     return (
       
       <div className="app">
@@ -57,9 +57,6 @@ class BooksApp extends React.Component {
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
-              
-              <Books/>     
-
             </div>
             <div className="list-books-content">
               <div>
@@ -212,6 +209,11 @@ class BooksApp extends React.Component {
                 </div>
               </div>
             </div>
+
+            <ol>
+              {this.state.books.map(book => <Books key={book.id} book={book}/>)}
+            </ol>  
+
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
