@@ -211,10 +211,12 @@ class BooksApp extends React.Component {
               </div>
             </div>
 
+ {/*        Receiving directly from Books 
             <ol>
               {this.state.books.map(book => <Books key={book.id} book={book}/>)}
-            </ol>  
-            <Shelves/>
+            </ol>  */} 
+
+            <Shelves shelfTitle="Something" selectedShelfTitle={this.state.books}/>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
