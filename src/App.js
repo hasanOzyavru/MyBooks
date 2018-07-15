@@ -35,16 +35,26 @@ class BooksApp extends React.Component {
   }
 
   searchBook(event){
-    event.target.value !=='' && (
+    if (event.target.value !=='') {
       BooksAPI.search(event.target.value).then (results => {
-        this.state.books.map(book => {
+ //   console.log(results.error);       
+        if (results.error === undefined) {
+          results.map(result => {
+            result.imageLinks === undefined && (result.imageLinks = `url(https://)`);
+            result.shelf === undefined && (result.shelf = 'none');
+          })
+          this.state.books.map(book => {
           (book.id === results.id) && (results.shelf = book.shelf); 
-        })
-        this.setState({foundBooks:results});
-      }
-  )
-  )
-  }
+          })
+          this.setState({foundBooks:results});
+        }else {
+        this.setState({foundBooks:[]});
+        }      
+      })
+    }else {
+    this.setState({foundBooks:[]});
+    }
+  };
   
   render() {
 
@@ -52,8 +62,8 @@ class BooksApp extends React.Component {
     let readingShelf = this.state.books.filter(book => book.shelf==='currentlyReading');
     let wantToReadShelf = this.state.books.filter(book => book.shelf==='wantToRead');
     let readShelf = this.state.books.filter(book => book.shelf==='read');
-    return (
-      
+    
+    return (     
       <div className="app">
         <Route path='/search' render={() => (
           <div className="search-books">
