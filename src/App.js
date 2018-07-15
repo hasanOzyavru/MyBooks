@@ -19,11 +19,16 @@ class BooksApp extends React.Component {
   constructor(props){
     super(props);
     this.state = {books:[]};
+    this.updateBookInShelves=this.updateBookInShelves.bind(this);
   }
 
+  
   componentDidMount (){
     BooksAPI.getAll().then(books => this.setState({books}));
-    
+  }
+
+  updateBookInShelves (bookId, event){
+    BooksAPI.update(bookId,event.target.value).then(BooksAPI.getAll().then(books => this.setState({books})));
   }
   
   render() {
@@ -71,9 +76,9 @@ class BooksApp extends React.Component {
               {this.state.books.map(book => <Books key={book.id} book={book}/>)}
             </ol>  */} 
 
-            <Shelves shelfTitle="Currently Reading" selectedShelfTitle={readingShelf}/>
-            <Shelves shelfTitle="Want To Read" selectedShelfTitle={wantToReadShelf}/>
-            <Shelves shelfTitle="Read" selectedShelfTitle={readShelf}/>
+            <Shelves shelfTitle="Currently Reading" selectedShelfTitle={readingShelf} updateShelves={this.updateBookInShelves}/>
+            <Shelves shelfTitle="Want To Read" selectedShelfTitle={wantToReadShelf} updateShelves={this.updateBookInShelves}/>
+            <Shelves shelfTitle="Read" selectedShelfTitle={readShelf} updateShelves={this.updateBookInShelves} />
           </div>
         )}
       </div>
