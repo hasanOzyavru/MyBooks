@@ -1,17 +1,23 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+This is the 7th project in Udacity FEND Nanodegree Program. The project is a React implementation. It is prepared for the follow up and categorizing the books in three different shelves : Read, Want to read or Currently reading
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+The starter template is used in the project. It is to save time by using a static example of the CSS and HTML markup, provided. React code is main focus and completed by this project. 
+
+Project started by cloning the starter project from [Start Repository](https://github.com/udacity/reactnd-project-myreads-starter).
+
+## What is done in the project
+
+Remembering that good React design practice is to create new JS files for each component, Books.js and Shelves.js component classes are created and using import statements they are included where they are needed. There is a hierarchical connections mainly from Books to Shelves and Shelves to main App. Methods are passed and implemented through props and states are altered based on user actions (such as selecting the shelf category or searching special author or title in search bar. BrowserRouter, Route and Link are used to switch between the root and search pages.
 
 ## TL;DR
 
-To get started developing right away:
-
+Following the cloning this project, move to the directory and:
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+Thus project will run on a given static data. 
 
-## What You're Getting
+## What You're Getting as starter material
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
@@ -33,7 +39,7 @@ To get started developing right away:
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+
 
 ## Backend Server
 
@@ -87,6 +93,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+The starter repository is the starter code for _all_ Udacity students. Therefore, pull requests are not accepted. This repository is the project submitted. So feel free to use it to understand or improve.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
