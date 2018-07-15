@@ -37,6 +37,9 @@ class BooksApp extends React.Component {
   searchBook(event){
     event.target.value !=='' && (
       BooksAPI.search(event.target.value).then (results => {
+        this.state.books.map(book => {
+          (book.id === results.id) && (results.shelf = book.shelf); 
+        })
         this.setState({foundBooks:results});
       }
   )
@@ -73,7 +76,7 @@ class BooksApp extends React.Component {
               <ol className="books-grid">
                 {
                   this.state.foundBooks.map(book => 
-                    <Books key={book.id} book={book}/>
+                    <Books key={book.id} book={book} updateBooks={this.updateBookInShelves}/>
                   )
                 }
               </ol>
