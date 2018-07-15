@@ -4,6 +4,7 @@ import './App.css'
 //import Books from './Books'
 import Shelves from './Shelves'
 import {Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class BooksApp extends React.Component {
   /** 
@@ -44,7 +45,7 @@ class BooksApp extends React.Component {
         <Route path='/search' render={() => (
           <div className="search-books">
             <div className="search-books-bar">
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+              <Link className="close-search" to=''>Close</Link>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -71,13 +72,8 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
           </div>
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              <Link to='/search'>Add a book</Link>
             </div>
-            {/*        Receiving directly from Books 
-            <ol>
-              {this.state.books.map(book => <Books key={book.id} book={book}/>)}
-            </ol>  */} 
-
             <Shelves shelfTitle="Currently Reading" selectedShelfTitle={readingShelf} updateShelves={this.updateBookInShelves}/>
             <Shelves shelfTitle="Want To Read" selectedShelfTitle={wantToReadShelf} updateShelves={this.updateBookInShelves}/>
             <Shelves shelfTitle="Read" selectedShelfTitle={readShelf} updateShelves={this.updateBookInShelves} />
