@@ -1,7 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-//import Books from './Books'
 import Shelves from './Shelves'
 import {Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
@@ -35,7 +34,9 @@ class BooksApp extends React.Component {
   }
 
   searchBook(event){
-
+    event.target.value !=='' && (
+      BooksAPI.search(event.target.value).then (results => {console.log("zhasan")})
+  )
   }
   
   render() {
