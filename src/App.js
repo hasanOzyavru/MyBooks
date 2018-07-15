@@ -4,6 +4,7 @@ import './App.css'
 import Shelves from './Shelves'
 import {Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import Books from './Books'
 
 class BooksApp extends React.Component {
   /** 
@@ -35,7 +36,10 @@ class BooksApp extends React.Component {
 
   searchBook(event){
     event.target.value !=='' && (
-      BooksAPI.search(event.target.value).then (results => {console.log("zhasan")})
+      BooksAPI.search(event.target.value).then (results => {
+        this.setState({foundBooks:results});
+      }
+  )
   )
   }
   
@@ -66,7 +70,13 @@ class BooksApp extends React.Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+                {
+                  this.state.foundBooks.map(book => 
+                    <Books key={book.id} book={book}/>
+                  )
+                }
+              </ol>
             </div>
           </div>
           )}/>
