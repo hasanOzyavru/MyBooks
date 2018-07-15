@@ -28,8 +28,10 @@ class BooksApp extends React.Component {
   
   render() {
 
-    console.log(this.state.books);
-
+    //console.log(this.state.books);
+    let readingShelf = this.state.books.filter(book => book.shelf==='currentlyReading');
+    let wantToReadShelf = this.state.books.filter(book => book.shelf==='wantToRead');
+    let readShelf = this.state.books.filter(book => book.shelf==='read');
     return (
       
       <div className="app">
@@ -69,7 +71,9 @@ class BooksApp extends React.Component {
               {this.state.books.map(book => <Books key={book.id} book={book}/>)}
             </ol>  */} 
 
-            <Shelves shelfTitle="Something" selectedShelfTitle={this.state.books}/>
+            <Shelves shelfTitle="Currently Reading" selectedShelfTitle={readingShelf}/>
+            <Shelves shelfTitle="Want To Read" selectedShelfTitle={wantToReadShelf}/>
+            <Shelves shelfTitle="Read" selectedShelfTitle={readShelf}/>
           </div>
         )}
       </div>
