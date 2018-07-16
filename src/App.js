@@ -24,27 +24,28 @@ class BooksApp extends React.Component {
     this.updateBookInShelves=this.updateBookInShelves.bind(this);
     this.searchBook=this.searchBook.bind(this);
   }
-
   
+ 
   componentDidMount (){
-    BooksAPI.getAll().then(books => this.setState({books}));
+    BooksAPI.getAll().then((books) => {this.setState({books})});
   }
 
   updateBookInShelves (bookId, event){
-    BooksAPI.update(bookId,event.target.value).then(BooksAPI.getAll().then(books => this.setState({books})));
+    BooksAPI.update(bookId,event.target.value)
+    .then(BooksAPI.getAll().then((books) => {this.setState({books : books})}))
   }
 
   searchBook(event){
     if (event.target.value !=='') {
       BooksAPI.search(event.target.value).then (results => {
- //   console.log(results.error);       
+ //   console.log(results.error);              
         if (results.error === undefined) {
           results.map(result => {
             result.imageLinks === undefined && (result.imageLinks = `url(https://)`);
             result.shelf === undefined && (result.shelf = 'none');
-          })
-          this.state.books.map(book => {
-          (book.id === results.id) && (results.shelf = book.shelf); 
+            this.state.books.map(book => {
+              (book.id === result.id) && (result.shelf = book.shelf); 
+              })        
           })
           this.setState({foundBooks:results});
         }else {
@@ -68,7 +69,7 @@ class BooksApp extends React.Component {
         <Route path='/search' render={() => (
           <div className="search-books">
             <div className="search-books-bar">
-              <Link className="close-search" to=''>Close</Link>
+              <Link className="close-search" to='/'>Close</Link>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
